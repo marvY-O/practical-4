@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise #5: Input check</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        .err {
+            color: red;
+            font-size: 0.7em;
+        }
+    </style>
+    
+</head>
+<body>
+
+<form name="pw">
+    <table>
+        <tr>
+            <td>Password (min 6 characters):</td>
+            <td><input type="password" name="password1" id="password1" size="10" placeholder="Password"></td>
+            <td>
+                <div id="pw1_check" class="err"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Repeat password:</td>
+            <td><input type="password" name="password2" id="password2" size="10" placeholder="Password"></td>
+            <td>
+                <div id="pw2_check" class="err"></div>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" id="submitBtn"/>
+</form>
+
+</body>
+    <script>
+        var pw1 = document.getElementById("password1")
+        var pw2 = document.getElementById("password2")
+
+        var pw1_check = document.getElementById("pw1_check")
+        var pw2_check = document.getElementById("pw2_check")
+
+        var submitBtn = document.getElementById("submitBtn")
+
+        pw1.onchange = function(){
+            if(pw1.value.length < 6){
+                pw1_check.innerHTML = 'Too short'
+                submitBtn.style.display = "none"
+            }
+            else{
+                pw1_check.innerHTML = ''
+                if (pw1.value == pw2.value){
+                    pw2_check.innerHTML = ''
+                    submitBtn.style.display = "block"
+                }
+                else{
+                    pw2_check.innerHTML = "the two passwords don't match."
+                    submitBtn.style.display = "none"
+                }
+            }
+        }
+        pw2.onchange = function(){
+            if(pw2.value.length < 6){
+                pw2_check.innerHTML = 'Too short'
+                submitBtn.style.display = "none"
+            }
+            else{
+                pw2_check.innerHTML = ''
+                if (pw1.value == pw2.value){
+                    pw2_check.innerHTML = ''
+                    submitBtn.style.display = "block"
+                }
+                else{
+                    pw2_check.innerHTML = "the two passwords don't match."
+                    submitBtn.style.display = "none"
+                }
+            }
+        }
+
+
+
+    </script>
+</html>
+
